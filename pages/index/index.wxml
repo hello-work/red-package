@@ -1,0 +1,77 @@
+<view>
+
+  <view>
+    <view class="honbao" wx:for="{{jinList}}" data-id="{{item.uuid}}" bindtap="lingQu">
+      <view class="honbao-n">点击领取红包</view>
+
+      <!-- 已经抢过红包提示弹窗 -->
+    <!-- <view wx:if="{{true}}"> -->
+      <view  class="zan-dialog {{alreadyGet ? 'zan-dialog--show' : ''}}">
+        <view class="zan-dialog__mask" catchtap="deleteDialog" />
+          <view class="zan-dialog__container">
+            <view class="page-section1">
+              <image src="/image/haveOpen.png"></image>
+              <view class="kaiBao-qie1">
+                <text class="gonXi">您已抢过该红包</text>
+                <view>您抢到的积分为<text>{{money}}</text>个</view>
+              </view>
+            </view>
+          </view>
+      </view>
+    <!-- </view> -->
+
+      <!-- 未抢过红包的下拉弹窗 -->
+      <!-- <view wx:elif="{{notGet}}"> -->
+    <view class="zan-dialog {{notGet ? 'zan-dialog--show' : ''}}">
+        <view class="zan-dialog__mask" catchtap="toggleDialog" />
+          <view class="zan-dialog__container">
+            <view class="page-section">
+            <movable-area>
+              <movable-view direction="vertical" bindchange="tuoDon">
+              <image src="/image/notOpen.png"></image>
+              </movable-view>
+            </movable-area>
+            <view class="kaiBao-qie">
+              <text>请把我</text>
+              <text>拉到此处</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    <!-- </view> -->
+
+      <!-- 成功抢到红包弹窗 -->
+    <!-- <view wx:elif="{{successGet}}"> -->
+        <view class="zan-dialog {{successGet ? 'zan-dialog--show' : ''}}">
+          <view class="zan-dialog__mask" catchtap="deleteDialog" />
+          <view class="zan-dialog__container">
+            <view class="page-section1">
+              <image src="/image/haveOpen.png"></image>
+              <view class="kaiBao-qie1">
+                <text class="gonXi">恭喜您</text>
+                <view>成功抢到<text>{{money}}</text>个积分</view>
+              </view>
+            </view>
+          </view>
+        </view>
+    <!-- </view> -->
+
+    <!-- 红包已被抢完弹窗 -->
+    <!-- <view wx:elif="{{overGet}}"> -->
+        <view  class="zan-dialog {{overGet ? 'zan-dialog--show' : ''}}">
+            <view class="zan-dialog__mask" catchtap="deleteDialog" />
+            <view class="zan-dialog__container">
+              <view class="page-section1">
+                <image src="/image/haveOpen.png"></image>
+                <view class="kaiBao-qie1">
+                  <text class="gonXi">对不起，红包已被抢完</text>
+                </view>
+              </view>
+            </view>
+        </view>
+      <!-- </view> -->
+
+  </view>
+</view>
+
+</view>

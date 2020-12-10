@@ -1,0 +1,19 @@
+<template name="kaiHonBao">
+  <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}" hidden="{{isKaiHonBao}}">
+  <!-- 如果想点击弹窗外不隐藏，取消bindtap点击事件即可 -->
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container">
+    <view class="page-section">
+      <movable-area>
+        <movable-view direction="vertical" bindchange="tuoDon">
+          <image src="/image/矢量智能对象.png"></image>
+        </movable-view>
+      </movable-area>
+      <view class="kaiBao-qie">
+        <text>请把我</text>
+        <text>拉到此处</text>
+      </view>
+    </view>
+  </view>
+</view>
+</template>

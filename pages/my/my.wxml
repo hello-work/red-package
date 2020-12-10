@@ -1,0 +1,32 @@
+<view>
+  <!-- 登入状态 -->
+  <!-- 使用block判断是否是登入状态，如果是显示登入状态，不是显示登入按钮 -->
+  <block wx:if="{{userLogin}}">
+    <view class="userinfo">
+      <!-- <image class="userinfo-avatar" src="{{touXaing}}"></image> -->
+      <open-data type='userAvatarUrl' class="userinfo-avatar"></open-data>
+      <text class="userinfo-nickname">欢迎回来<text class="name">{{userName}}</text></text>
+      <text class="userinfo-nickname">个人积分:<text class="name">{{integral}}</text></text>
+    </view>
+    
+    <block wx:if="{{type == 1}}">
+      <!-- 发红包按钮 -->
+      <view class="honbao" bindtap="faHonbao">发红包</view>
+    </block>
+    
+    <block wx:else>
+      <!-- 认证信息 -->
+      <view class="honbao" bindtap="renZhen">信息认证</view>
+    </block>
+  </block>
+  
+  <!-- 点击登入 -->
+  <block wx:else>
+    <view class="userinfo">
+		  <image class="userinfo-avatar" src="/image/nologin.png"></image>
+		  <text class="userinfo-nickname">请登入...</text>
+    </view>
+    <button class="l" open-type="getUserInfo" bindgetuserinfo="toLogin">登入</button>
+  </block>
+
+</view>

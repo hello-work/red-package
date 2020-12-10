@@ -1,0 +1,17 @@
+<!--pages/xinxi/xinxi.wxml-->
+<view>
+  <view class="input-title">
+    <text>姓名</text>
+    <input class="title_input" type="text" placeholder="请输入姓名" maxlength="7" placeholder-style="color:#ccc;font-size30rpx" bindinput="handleTitleInput" value="{{title}}" />
+    <!-- <text>元</text> -->
+  </view>
+  <view class="input-title">
+    <text>身份证</text>
+    <input class="title_input" type="number" placeholder="请输入身份证" maxlength="18" placeholder-style="color:#ccc;font-size30rpx" bindinput="GuTitleInput" value="{{titleGu}}" />
+    <!-- <text>个</text> -->
+  </view>
+  <view>
+    <view wx:if="{{title == '' || titleGu == ''}}" class="saiQian1">提交</view>
+    <view wx:else class="saiQian" bindtap="saiQian">提交</view>
+  </view>
+</view>

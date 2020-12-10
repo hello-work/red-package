@@ -1,0 +1,46 @@
+/* pages/xinxi/xinxi.wxss */
+.input-title{
+  width: 700rpx;
+  height: 100rpx;
+  background-color: white;
+  margin: 20rpx 25rpx;
+  display: flex;
+}
+.input-title text:nth-of-type(1){
+  width: 140rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  margin: 0 10rpx;
+}
+.input-title input{
+  margin-top: 28rpx;
+  width: 400rpx;
+}
+.input-title text:nth-of-type(2){
+  width: 80rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: right;
+  margin: 0 10rpx;
+}
+.saiQian{
+  width: 500rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: white;
+  background-color: red;
+  border-radius: 10rpx;
+  text-align: center;
+  margin:50rpx  125rpx;
+}
+.saiQian1{
+  width: 500rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: white;
+  background-color: #cccccc;
+  border-radius: 10rpx;
+  text-align: center;
+  margin:50rpx  125rpx;
+}

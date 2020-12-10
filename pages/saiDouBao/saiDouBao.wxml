@@ -1,0 +1,27 @@
+<view>
+  <view class="input-title">
+    <text>总金额</text>
+    <input class="title_input" type="text" placeholder="0.00" maxlength="7" placeholder-style="color:#ccc;font-size30rpx" bindinput="handleTitleInput" value="{{title}}" />
+    <text>元</text>
+  </view>
+  <view class="input-title">
+    <text>红包数</text>
+    <input class="title_input" type="number" placeholder="红包个数" maxlength="3" placeholder-style="color:#ccc;font-size30rpx" bindinput="GuTitleInput" value="{{titleGu}}" />
+    <text>个</text>
+  </view>
+
+    <view class="selector">
+    <picker class="select-title" mode="selector" bindchange="chooseGroup" value="{{type}}" range="{{groupList}}" range-key="{{'groupName'}}">
+      <view class="picker">
+      选择：{{groupList[type].groupName}}
+    </view>
+    </picker>
+  </view>
+  <!-- <view class="yuer">
+    ¥{{title}}
+  </view> -->
+  <view>
+    <view wx:if="{{title =='' || titleGu == ''}}"><button class="saiQian1">塞钱进红包</button></view>
+    <view wx:else  bindtap="saiQian"><button open-type="share" data-index="1" class="button">塞钱进红包</button></view>
+  </view>
+</view>
