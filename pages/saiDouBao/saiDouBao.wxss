@@ -47,12 +47,22 @@ page{
 }
 .button{
   width: 500rpx;
-  background-color: greenyellow;
-  color: white;
+  background-color: white;
+  color: #000000;
+  border: 1rpx solid #000000;
 }
 .saiQian1{
   width: 500rpx;
   height: 80rpx;
   color: white;
   background-color: #cccccc;
+}
+.selector{
+  width: 650rpx;
+  height: 100rpx;
+  background-color: white;
+  margin: 20rpx 25rpx;
+  /* display: flex; */
+  line-height: 100rpx;
+  padding: 0rpx 25rpx;
 }

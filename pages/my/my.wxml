@@ -11,7 +11,7 @@
     
     <block wx:if="{{type == 1}}">
       <!-- 发红包按钮 -->
-      <view class="honbao" bindtap="faHonbao">发红包</view>
+      <view class="honbao" bindtap="faHonbao">包豆包吧</view>
     </block>
     
     <block wx:else>
@@ -24,7 +24,7 @@
   <block wx:else>
     <view class="userinfo">
 		  <image class="userinfo-avatar" src="/image/nologin.png"></image>
-		  <text class="userinfo-nickname">请登入...</text>
+		  <text class="userinfo-nickname">先注册登入才能划豆包哦!</text>
     </view>
     <button class="l" open-type="getUserInfo" bindgetuserinfo="toLogin">登入</button>
   </block>

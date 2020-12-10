@@ -1,8 +1,7 @@
 <view>
-
   <view>
     <view class="honbao" wx:for="{{jinList}}" data-id="{{item.uuid}}" bindtap="lingQu">
-      <view class="honbao-n">点击领取红包</view>
+      <view class="honbao-n">按此划开豆包</view>
 
       <!-- 已经抢过红包提示弹窗 -->
     <!-- <view wx:if="{{true}}"> -->
@@ -12,7 +11,7 @@
             <view class="page-section1">
               <image src="/image/haveOpen.png"></image>
               <view class="kaiBao-qie1">
-                <text class="gonXi">您已抢过该红包</text>
+                <text class="gonXi">您已划过此豆包</text>
                 <view>您抢到的积分为<text>{{money}}</text>个</view>
               </view>
             </view>
@@ -72,6 +71,6 @@
       <!-- </view> -->
 
   </view>
+  <view class="liuBai"></view>
 </view>
-
 </view>

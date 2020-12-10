@@ -205,6 +205,11 @@ Page({
     }
   },
 
+  // 上拉加载更多
+  onReachBottom(){
+    console.log('上拉执行了')
+  },
+
   toLogin:function(){
     var that = this;
     wx.login({

@@ -1,6 +1,6 @@
 /* pages/my/my.wxss */
 page{
-  background-color: #fff;
+  background-color: #eeeeee;
 }
 /* 登入的样式 */
 .l{
@@ -14,17 +14,20 @@ page{
 	flex-direction: column;
 	align-items: center;
   width: 750rpx;
+  margin-top: 20rpx;
 }
 .userinfo-avatar {
 	width: 160rpx;
   height: 160rpx;
   border-radius: 50%;
+  overflow: hidden;
 }
 .userinfo-nickname {
   margin-top: 20rpx;
   margin-bottom: 20rpx;
-  font-size: 28rpx;
+  font-size: 36rpx;
   text-align: center;
+  color: #000000;
 }
 .name{
   color: rgb(248, 115, 6);
@@ -32,14 +35,16 @@ page{
 }
 
 .honbao{
-  width: 700rpx;
+  width: 600rpx;
   height: 80rpx;
-  margin: 10rpx 25rpx;
+  margin: 10rpx 75rpx;
   background-color: red;
   border-radius: 10rpx;
-  color: white;
+  background-color: white;
+  color: #000000;
   text-align: center;
   line-height: 80rpx;
+  border: 1rpx solid #000000;
 }
 
 /* 弹窗部分样式 */

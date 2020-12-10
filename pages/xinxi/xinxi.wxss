@@ -1,4 +1,7 @@
 /* pages/xinxi/xinxi.wxss */
+page{
+  background-color: #eeeeee;
+}
 .input-title{
   width: 700rpx;
   height: 100rpx;
@@ -28,8 +31,9 @@
   width: 500rpx;
   height: 80rpx;
   line-height: 80rpx;
-  color: white;
-  background-color: red;
+  color: #000000;
+  background-color: white;
+  border: 1rpx solid #000000;
   border-radius: 10rpx;
   text-align: center;
   margin:50rpx  125rpx;

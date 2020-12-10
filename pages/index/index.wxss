@@ -3,31 +3,18 @@ page{
   background-color: #eeeeee;
 }
 .honbao{
-  width: 700rpx;
-  height: 200rpx;
-  margin: 20rpx 25rpx;
-  background-color: red;
+  width: 650rpx;
+  height: 125rpx;
+  margin: 20rpx 50rpx;
+  background-color: white;
   border-radius: 15rpx;
   text-align: center;
+  border: 1rpx solid #000000;
 }
 .honbao .honbao-n{
-  font-size: 40rpx;
-  color: white;
-  line-height: 200rpx;
-}
-
-.honbao1{
-  width: 700rpx;
-  height: 200rpx;
-  margin: 20rpx 25rpx;
-  background-color: #cccccc;
-  border-radius: 15rpx;
-  text-align: center;
-}
-.honbao1 text:nth-of-type(1){
-  font-size: 40rpx;
-  color: white;
-  line-height: 200rpx;
+  font-size: 36rpx;
+  color: #000000;
+  line-height: 125rpx;
 }
 
 /* 弹窗部分样式 */
@@ -47,7 +34,7 @@ page{
   bottom: 200rpx;
   width: 650rpx;    /*弹窗布局宽*/
   height: 800rpx;   /*弹窗布局高，与下面弹出距离transform有关*/
-  margin: 0 25rpx;
+  /* margin: 0 25rpx; */
   background: white;
   transform: translateY(300%);  /*弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度 */
   transition: all 0.4s ease;
@@ -150,4 +137,8 @@ movable-area {
 .kaiBao-qie1 view text{
   color: red;
   font-size: 50rpx;
+}
+.liuBai{
+  width: 100rpx;
+  height: 20rpx;
 }
