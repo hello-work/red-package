@@ -78,7 +78,7 @@ Page({
         fail:res=>{
           console.log("请求失败")
         }
-      })
+      });
   },
 
   /**
