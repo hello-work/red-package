@@ -31,8 +31,9 @@ Page({
     money:0,
     userName:"",
     //上拉加载
-    pageNo:0,
+    pageNo:1,
     end:false,//false 没到底 true 到底了
+    pages:0
   },
   
   //弹窗按钮
@@ -143,10 +144,24 @@ Page({
   },
 
   onReachBottom:function(){
-    //console.log("上拉加载执行了");
-    this.delayLoad(this.data.pageNo + 1)
+    console.log("上拉加载执行了");
+    let _this = this;
+
+    if(_this.data.pageNo == _this.data.pages){
+      wx.showToast({
+        title: '暂时没有更多豆包了',
+        icon:'none',
+        mask:true
+      })
+    }else{
+      var pageNo = _this.data.pageNo + 1;
+      _this.setData({
+       pageNo:pageNo
+      })
+      this.delayLoad()
+    } 
   },
-  delayLoad:function(pageNo){
+  delayLoad:function(){
     var that = this;
     var encryptedData = wx.getStorageSync('encryptedData');
     var iv = wx.getStorageSync('iv');
@@ -177,10 +192,11 @@ Page({
           success: (res) => {
             wx.showLoading({
               title: '加载中',
+              mask:true
             })
               wx.request({
-                //url: 'http://21168cd639ac.ngrok.io/redPackage/getAvailableRedPackageList',
-                url: 'https://www.jacknow.top:8820/redPackage/getAvailableRedPackageList',
+                url: 'http://21168cd639ac.ngrok.io/redPackage/getAvailableRedPackageList',
+                //url: 'https://www.jacknow.top:8820/redPackage/getAvailableRedPackageList',
                 method:"POST",
                 data:{
                   userId:openId,
@@ -193,13 +209,13 @@ Page({
                 },
                 success:res=>{
                   if(res.data.resultCode == 1){
-                    wx.hideLoading()
-                    let old = that.data.jinList;
-                    let newData = old.concat(res.data.data);
-                    console.log(newData);
-                    that.setData({
-                      jinList:newData
-                    })
+                      wx.hideLoading()
+                      console.log(res);
+                      let old = that.data.jinList;
+                      let newData = old.concat(res.data.data);
+                      that.setData({
+                        jinList:newData,
+                      })
                   }else if(res.data.resultCode == -1){
                     console.log("请从群分享的渠道进入");
                   }
@@ -241,6 +257,42 @@ Page({
       }
     });
   },
+  delay:function(){
+    let that = this;
+    var encryptedData = wx.getStorageSync('encryptedData');
+    var iv = wx.getStorageSync('iv');
+    const openId = wx.getStorageSync('openId');
+    // console.log(encryptedData)
+    // console.log(iv);
+    wx.checkSession({
+      success: (res) => {
+        wx.request({
+          url: 'http://21168cd639ac.ngrok.io/redPackage/getPageCount',
+          method:"POST",
+          data:{
+            userId:openId,
+            encryptedData:encryptedData,
+            iv:iv,
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success:res=>{
+            // console.log(res);
+            if(res.data.resultCode == 1){
+              // console.log(res.data)
+              that.setData({
+                pages:res.data.data
+              })
+            }
+          }
+        })
+      },
+      fail(){
+        that.toLogin();
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -263,11 +315,16 @@ Page({
     }, 1000);
   },
 
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.hideShareMenu();
+    let that = this;
+    var timeDeley = setTimeout(()=>{
+      that.delay();
+    },1000)
   },
 
   /**

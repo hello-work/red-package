@@ -14,10 +14,13 @@ Page({
     miZhi:'',
     groupList:[],
     type:0,
-    groupId:""
+    groupId:"",
+    phValue:'',
+    titleMoeny:''
   },
 
   handleTitleInput(e){
+    let that = this;
     let inputValue = e.detail.value;
     inputValue = inputValue.replace(/[^0123456789.]/,"");//只能输入数字
     inputValue = inputValue.replace(/\.+/,".");//小数点只能出现一次
@@ -27,6 +30,7 @@ Page({
     if(inputValue.charAt(0) == "0" && inputValue.charAt(1)!="." && inputValue.length >= 2){
       inputValue = inputValue.replace(/0/,"")
     }
+    
     let titleCount = inputValue.length;
     if(titleCount <= 7){
       this.setData({
@@ -37,6 +41,7 @@ Page({
   GuTitleInput(e){
     let value = e.detail.value;
     value = value.replace(/[^0123456789.]/,"");//只能输入数字
+    value = value.replace(/[\u4e00-\u9fa5]/ig,"");//不能出现中文字符
     let valueCount = value.length;
     if(valueCount <= 500){
       this.setData({
@@ -138,7 +143,28 @@ chooseGroup: function(e) {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this;
+    const openId = wx.getStorageSync('openId');
+    wx.request({
+      url: 'http://21168cd639ac.ngrok.io/user/getBalance',
+      method:'POST',
+      data:{
+        userId:openId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:res=>{
+        console.log(res);
+        if(res.data.resultCode == 1){
+          console.log(res.data.data)
+          that.setData({
+            titleMoeny:res.data.data,
+            phValue:'您的可用余额是'+res.data.data
+          })
+        }
+      }
+    })
   },
 
   /**
