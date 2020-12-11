@@ -1,7 +1,7 @@
 <view>
   <view class="input-title">
     <text>总金额:</text>
-    <input class="title_input" type="number" placeholder="{{phValue}}" maxlength="7" placeholder-style="color:#ccc;font-size30rpx" bindinput="handleTitleInput" value="{{title}}" />
+    <input class="title_input" type="number" placeholder="{{phValue}}" maxlength="7" placeholder-style="color:#ccc;font-size30rpx" bindblur="loseFocus" value="{{title}}" />
     <text>元</text>
   </view>
   <view class="input-title">

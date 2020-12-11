@@ -195,8 +195,8 @@ Page({
               mask:true
             })
               wx.request({
-                url: 'http://21168cd639ac.ngrok.io/redPackage/getAvailableRedPackageList',
-                //url: 'https://www.jacknow.top:8820/redPackage/getAvailableRedPackageList',
+                //url: 'http://21168cd639ac.ngrok.io/redPackage/getAvailableRedPackageList',
+                url: 'https://www.jacknow.top:8820/redPackage/getAvailableRedPackageList',
                 method:"POST",
                 data:{
                   userId:openId,
@@ -267,7 +267,8 @@ Page({
     wx.checkSession({
       success: (res) => {
         wx.request({
-          url: 'http://21168cd639ac.ngrok.io/redPackage/getPageCount',
+          //url: 'http://21168cd639ac.ngrok.io/redPackage/getPageCount',
+          url: 'https://www.jacknow.top:8820/redPackage/getPageCount',
           method:"POST",
           data:{
             userId:openId,

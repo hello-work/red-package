@@ -19,22 +19,44 @@ Page({
     titleMoeny:''
   },
 
-  handleTitleInput(e){
-    let that = this;
-    let inputValue = e.detail.value;
-    inputValue = inputValue.replace(/[^0123456789.]/,"");//只能输入数字
-    inputValue = inputValue.replace(/\.+/,".");//小数点只能出现一次
-    inputValue = inputValue.replace(/[\u4e00-\u9fa5]/ig,"");//不能出现中文字符
-    inputValue = inputValue.replace(/^(\-)*(\d+)\.(\d\d).*$/,"$1$2.$3")//保留后两位小数
-    //再不是0开头的字符进行修改：‘01’=>1
-    if(inputValue.charAt(0) == "0" && inputValue.charAt(1)!="." && inputValue.length >= 2){
-      inputValue = inputValue.replace(/0/,"")
-    }
+  // handleTitleInput(e){
+  //   let that = this;
+  //   let inputValue = e.detail.value;
+  //   inputValue = inputValue.replace(/[^0123456789.]/,"");//只能输入数字
+  //   inputValue = inputValue.replace(/\.+/,".");//小数点只能出现一次
+  //   inputValue = inputValue.replace(/[\u4e00-\u9fa5]/ig,"");//不能出现中文字符
+  //   inputValue = inputValue.replace(/^(\-)*(\d+)\.(\d\d).*$/,"$1$2.$3")//保留后两位小数
+  //   //再不是0开头的字符进行修改：‘01’=>1
+  //   if(inputValue.charAt(0) == "0" && inputValue.charAt(1)!="." && inputValue.length >= 2){
+  //     inputValue = inputValue.replace(/0/,"")
+  //   }
     
-    let titleCount = inputValue.length;
-    if(titleCount <= 7){
-      this.setData({
-        title:inputValue,
+  //   let titleCount = inputValue.length;
+  //   if(titleCount <= 7){
+  //     this.setData({
+  //       title:inputValue,
+  //     })
+  //   }
+  // },
+  // getFocus:function(e){
+
+  // },
+  loseFocus:function(e){
+    console.log(e);
+    let that = this;
+    var value = e.detail.value;
+    console.log(value)
+    value = value.replace(/[^0123456789.]/,"");//只能输入数字
+    if(value > that.data.titleMoeny){
+      wx.showToast({
+        title: '请规范输入',
+        icon: 'none',
+        
+        success:res=>{
+          that.setData({
+            title:''
+          })
+        }
       })
     }
   },
@@ -146,7 +168,8 @@ chooseGroup: function(e) {
     let that = this;
     const openId = wx.getStorageSync('openId');
     wx.request({
-      url: 'http://21168cd639ac.ngrok.io/user/getBalance',
+      //url: 'http://21168cd639ac.ngrok.io/user/getBalance',
+      url:'https://www.jacknow.top:8820/user/getBalance',
       method:'POST',
       data:{
         userId:openId
