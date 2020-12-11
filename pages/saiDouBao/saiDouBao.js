@@ -24,7 +24,7 @@ Page({
     let that = this;
     var value = e.detail.value;
     console.log(value)
-    value = value.replace(/[^0123456789.]/,"");//只能输入数字
+    value = value.replace(/[^0123456789]/,"");//只能输入数字
     if(value > that.data.titleMoeny){
       wx.showToast({
         title: '请输入可用余额内的金额',
@@ -36,25 +36,27 @@ Page({
           })
         }
       })
-    }else if(! /^d+$/.test(this.value)){
-      wx.showToast({
-        title: '请规范输入',
-        icon: 'none',
-        duration:2000,
-        success:res=>{
-          that.setData({
-            title:''
-          })
-        }
-      })
     }else{
       let valueCount = value.length;
-      if(valueCount <= 500){
+      if(valueCount <= 7){
         that.setData({
           title:value
       })
     }
     }
+    //else if(value ){
+    //   wx.showToast({
+    //     title: '请规范输入',
+    //     icon: 'none',
+    //     duration:2000,
+    //     success:res=>{
+    //       that.setData({
+    //         title:''
+    //       })
+    //     }
+    //   })
+    // }
+    
   },
   GuTitleInput(e){
     let value = e.detail.value;
