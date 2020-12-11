@@ -2,10 +2,14 @@
 page{
   background-color: #eeeeee;
 }
+.honbao-chudi{
+  height: 100vh;
+  margin: 20rpx;
+}
 .honbao{
   width: 650rpx;
   height: 125rpx;
-  margin: 20rpx 50rpx;
+  margin: 20rpx 30rpx;
   background-color: white;
   border-radius: 15rpx;
   text-align: center;
@@ -139,6 +143,10 @@ movable-area {
   font-size: 50rpx;
 }
 .liuBai{
-  width: 100rpx;
-  height: 20rpx;
+  width: 710rpx;
+  height: 40rpx;
+  color: #000000;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 40rpx;
 }

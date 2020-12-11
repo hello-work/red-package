@@ -178,7 +178,7 @@ chooseGroup: function(e) {
     console.log(`这是通过：${e.from}`);
     //分享卡片内容
     return{
-      title:'用户:'+this.data.miZhi+'有一个豆沙包分享，来划一下把吧！',
+      title:'用户:'+this.data.miZhi+'有一个豆沙包分享，来划一下吧！',
       path:'/pages/index/index?id='+e.target.dataset.index,
       imageUrl:'/image/notOpen.png',
       // 回调废了，拿不到参数，看官方文档，不要问我

@@ -1,6 +1,5 @@
-<view>
-  <view>
-    <view class="honbao" wx:for="{{jinList}}" data-id="{{item.uuid}}" bindtap="lingQu">
+<view class="honbao-chudi">
+    <view class="honbao" wx:for="{{jinList}}" data-id="{{item.uuid}}" wx:key="index" bindtap="lingQu">
       <view class="honbao-n">按此划开豆包</view>
 
       <!-- 已经抢过红包提示弹窗 -->
@@ -71,6 +70,5 @@
       <!-- </view> -->
 
   </view>
-  <view class="liuBai"></view>
-</view>
+   <view wx:if="{{end}}" class="liuBai">请前往个人主页包豆包</view>
 </view>

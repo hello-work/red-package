@@ -29,14 +29,14 @@ Page({
     //红包已被抢完的标识
     overGet:false,
     money:0,
-    userName:""
+    userName:"",
+    //上拉加载
+    pageNo:0,
+    end:false,//false 没到底 true 到底了
   },
-
+  
   //弹窗按钮
   toggleDialog(){
-    // this.setData({
-    //   showDialog:false
-    // });
     let that = this;
     //抢红包成功
     if(that.data.quota == 1){
@@ -142,7 +142,11 @@ Page({
     
   },
 
-  delayLoad:function(){
+  onReachBottom:function(){
+    //console.log("上拉加载执行了");
+    this.delayLoad(this.data.pageNo + 1)
+  },
+  delayLoad:function(pageNo){
     var that = this;
     var encryptedData = wx.getStorageSync('encryptedData');
     var iv = wx.getStorageSync('iv');
@@ -171,28 +175,36 @@ Page({
         wx.checkSession({
           //session_key未过期
           success: (res) => {
-            wx.request({
-              //url: 'http://6d0a5fc1cf68.ngrok.io/redPackage/getAvailableRedPackageList',
-              url: 'https://www.jacknow.top:8820/redPackage/getAvailableRedPackageList',
-              method:"POST",
-              data:{
-                userId:openId,
-                encryptedData:encryptedData,
-                iv:iv
-              },
-              header: {
-                'content-type': 'application/x-www-form-urlencoded'
-              },
-              success:res=>{
-                if(res.data.resultCode == 1){
-                  that.setData({
-                    jinList:res.data.data,
-                  });
-                }else if(res.data.resultCode == -1){
-                  console.log("请从群分享的渠道进入");
+            wx.showLoading({
+              title: '加载中',
+            })
+              wx.request({
+                //url: 'http://21168cd639ac.ngrok.io/redPackage/getAvailableRedPackageList',
+                url: 'https://www.jacknow.top:8820/redPackage/getAvailableRedPackageList',
+                method:"POST",
+                data:{
+                  userId:openId,
+                  encryptedData:encryptedData,
+                  iv:iv,
+                  pageNo:that.data.pageNo
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                success:res=>{
+                  if(res.data.resultCode == 1){
+                    wx.hideLoading()
+                    let old = that.data.jinList;
+                    let newData = old.concat(res.data.data);
+                    console.log(newData);
+                    that.setData({
+                      jinList:newData
+                    })
+                  }else if(res.data.resultCode == -1){
+                    console.log("请从群分享的渠道进入");
+                  }
                 }
-              }
-            });
+              });
           },
           //session_key已过期
           fail:(res)=>{
@@ -203,11 +215,6 @@ Page({
         
       }
     }
-  },
-
-  // 上拉加载更多
-  onReachBottom(){
-    console.log('上拉执行了')
   },
 
   toLogin:function(){
@@ -294,9 +301,9 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  // onReachBottom: function () {
 
-  },
+  //},
 
   /**
    * 用户点击右上角分享
