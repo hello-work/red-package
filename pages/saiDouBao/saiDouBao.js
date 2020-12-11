@@ -36,6 +36,17 @@ Page({
           })
         }
       })
+    }else if(! /^d+$/.test(this.value)){
+      wx.showToast({
+        title: '请规范输入',
+        icon: 'none',
+        duration:2000,
+        success:res=>{
+          that.setData({
+            title:''
+          })
+        }
+      })
     }else{
       let valueCount = value.length;
       if(valueCount <= 500){
