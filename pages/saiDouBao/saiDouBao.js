@@ -19,28 +19,6 @@ Page({
     titleMoeny:''
   },
 
-  // handleTitleInput(e){
-  //   let that = this;
-  //   let inputValue = e.detail.value;
-  //   inputValue = inputValue.replace(/[^0123456789.]/,"");//只能输入数字
-  //   inputValue = inputValue.replace(/\.+/,".");//小数点只能出现一次
-  //   inputValue = inputValue.replace(/[\u4e00-\u9fa5]/ig,"");//不能出现中文字符
-  //   inputValue = inputValue.replace(/^(\-)*(\d+)\.(\d\d).*$/,"$1$2.$3")//保留后两位小数
-  //   //再不是0开头的字符进行修改：‘01’=>1
-  //   if(inputValue.charAt(0) == "0" && inputValue.charAt(1)!="." && inputValue.length >= 2){
-  //     inputValue = inputValue.replace(/0/,"")
-  //   }
-    
-  //   let titleCount = inputValue.length;
-  //   if(titleCount <= 7){
-  //     this.setData({
-  //       title:inputValue,
-  //     })
-  //   }
-  // },
-  // getFocus:function(e){
-
-  // },
   loseFocus:function(e){
     console.log(e);
     let that = this;
@@ -49,15 +27,22 @@ Page({
     value = value.replace(/[^0123456789.]/,"");//只能输入数字
     if(value > that.data.titleMoeny){
       wx.showToast({
-        title: '请规范输入',
+        title: '请输入可用余额内的金额',
         icon: 'none',
-        
+        duration:2000,
         success:res=>{
           that.setData({
             title:''
           })
         }
       })
+    }else{
+      let valueCount = value.length;
+      if(valueCount <= 500){
+        that.setData({
+          title:value
+      })
+    }
     }
   },
   GuTitleInput(e){
